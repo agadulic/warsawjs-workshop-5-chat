@@ -1,0 +1,22 @@
+{
+  "name": "node.js_chat",
+  "version": "1.0.0",
+  "description": "chat",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "warsawjs-workshop-5-chat"
+  },
+  "keywords": [
+    "chat"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "socket.io": "^1.7.3",
+    "socket.io-client": "^1.7.3"
+  }
+}
