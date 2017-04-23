@@ -16,11 +16,16 @@ socket.on('message', (msg) => {
 	readline.prompt();
 });
 
-console.log("Client started!");
 readline.on('line', (line) => {
-	if(line.trim()){
+	const firstWord = line.split(/\s+/)[0];
+	if (firstWord === '/exit') {
+		readline.close();
+		process.exit(0);
+	} else if (line.trim()){
 	socket.emit('message', line);
 }
 	readline.prompt();
 });
+
+console.log("Client started!");
 readline.prompt();
