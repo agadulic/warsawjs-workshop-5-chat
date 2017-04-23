@@ -1,17 +1,26 @@
 const io = require('socket.io-client');
-const socket = io('http://localhost:3000');
+const socket = io(`http://${process.argv[2] || 'localhost'}:3000`);
 const readline = require('readline').createInterface({
 	input: process.stdin,
 	output: process.stdout
 });
 
+function clearPrompt() {
+	process.stdout.cursorTo(0);
+	process.stdout.clearLine();
+}
+
 socket.on('message', (msg) => {
-	console.log('>> $msg');
+	clearPrompt();
+	console.log("${msg}")
+	readline.prompt();
 });
 
 console.log("Client started!");
 readline.on('line', (line) => {
-socket.emit('message', line);
-readline.prompt();
+	if(line.trim()){
+	socket.emit('message', line);
+}
+	readline.prompt();
 });
 readline.prompt();
